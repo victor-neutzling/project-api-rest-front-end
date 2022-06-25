@@ -12,7 +12,7 @@ export abstract class View<T>{
 
     public update(model:T):void{
         let template = this.template(model);
-        this.element.innerHTML = template;
+        this.element.innerHTML += template;
     }
 
     protected abstract template(model: T): string;

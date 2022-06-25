@@ -10,7 +10,7 @@ export class View {
     }
     update(model) {
         let template = this.template(model);
-        this.element.innerHTML = template;
+        this.element.innerHTML += template;
     }
 }
 //# sourceMappingURL=View.js.map

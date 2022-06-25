@@ -12,14 +12,8 @@ let btnFindTasks = document.querySelector('#find-tasks');
 
 console.log("aa")
 btnFindUsers?.addEventListener("click", event =>{
-     const promise = userService.getUsers();
-     promise.then(data => {
-        console.log(data);
-     });
+     searchController.searchUsers();
 });
 btnFindTasks?.addEventListener('click',event =>{ 
-    const promise = taskService.getTasks();
-     promise.then(data => { 
-        console.log(data);
-     });
+    searchController.searchTasks();
 })

@@ -9,6 +9,7 @@ main{
     flex-direction: column;
     width: 50%;
     margin-top: 10px;
+
 }
 #search-bar div{
     margin-top: 8px;
@@ -18,4 +19,18 @@ main{
 #search-bar div button{
     width: 30%;
     margin: 4px;
+    margin-bottom: 16px;
+}
+
+.search-item{
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    margin-bottom: 16px;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 16px;
+}
+
+.search-item h2{
+    line-height: 18px;
+    margin: 12px 0;
 }
