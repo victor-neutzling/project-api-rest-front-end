@@ -1,0 +1,1 @@
+{"version":3,"file":"searchController.js","sourceRoot":"","sources":["../../../src/controllers/searchController.ts"],"names":[],"mappings":"AAEA,OAAO,EAAE,UAAU,EAAE,MAAM,wBAAwB,CAAC;AAEpD,MAAM,OAAO,gBAAgB;IAEzB;QADQ,eAAU,GAAG,IAAI,UAAU,CAAC,iBAAiB,CAAC,CAAC;QAEnD,IAAI,CAAC,UAAU,CAAC,MAAM,CAAC,aAAa,CAAC,CAAA;IACzC,CAAC;CACJ"}

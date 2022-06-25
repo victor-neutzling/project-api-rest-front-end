@@ -3,7 +3,7 @@ export class SearchView extends View {
     template(model) {
         return `
         <div>
-            
+            ${model}
         </div>
         `;
     }

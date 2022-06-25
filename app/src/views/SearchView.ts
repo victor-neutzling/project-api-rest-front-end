@@ -3,10 +3,10 @@ import { View } from './View.js';
 
 
 export class SearchView extends View<SearchItem>{
-    protected template(model: SearchItem): string {
+    protected template(model: string): string {
         return `
         <div>
-            
+            ${model}
         </div>
         `
     }
