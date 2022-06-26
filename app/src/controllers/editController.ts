@@ -167,7 +167,7 @@ export class editController{
         return false
 
         if((this.birthDate as HTMLInputElement).value != null)
-        if(ValidationHelper.checkDate((this.birthDate as HTMLInputElement).value)==false)
+        if(ValidationHelper.checkBirthDate((this.birthDate as HTMLInputElement).value)==false)
         return false
 
         if((this.email as HTMLInputElement).value != null)

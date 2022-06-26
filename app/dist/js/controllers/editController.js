@@ -160,7 +160,7 @@ export class editController {
             if (ValidationHelper.checkCpf(this.cpf.value) == false)
                 return false;
         if (this.birthDate.value != null)
-            if (ValidationHelper.checkDate(this.birthDate.value) == false)
+            if (ValidationHelper.checkBirthDate(this.birthDate.value) == false)
                 return false;
         if (this.email.value != null)
             if (ValidationHelper.checkEmail(this.email.value) == false)
