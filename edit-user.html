@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
     <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/edit.css">
+    
     <title>Document</title>
 </head>
 <body>
@@ -21,8 +23,25 @@
         </ul>
     </header>
     <main>
-
+        <h1>Find User</h1>
+        <input type="text" placeholder="user ID" id="user-id">
+        <button id="find-user">find user</button>
+        <h1>Edit User</h1>
+        <input type="text" placeholder="name" id="name">
+        <input type="text" placeholder="cpf" id="cpf">
+        <input type="text" placeholder="birth-date  mm/dd/yyyy" id="birth-date">
+        <input type="text" placeholder="email" id="email">
+        <input type="text" placeholder="password" id="password">
+        <input type="text" placeholder="address" id="address">
+        <input type="text" placeholder="number" id="number">
+        <input type="text" placeholder="complement" id="complement">
+        <input type="text" placeholder="city" id="city">
+        <input type="text" placeholder="state" id="state">
+        <input type="text" placeholder="country" id="country">
+        <button id="submit-user">Edit User</button>
     </main>
-    
+    <script type="module" src="./app/dist/js/edit.js"></script>
+    <script type="module" src="./app/dist/js/controllers/editController.js"></script>
+    <script type="module" src="./app/dist/js/helpers/validationHelper.js"></script>
 </body>    
 </html>

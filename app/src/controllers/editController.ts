@@ -2,7 +2,8 @@ import { ValidationHelper } from "../helpers/validationHelper.js";
 import { UserService } from "../services/userServices.js";
 import { TaskService } from "../services/taskServices.js";
 
-export class RegisterController{
+export class editController{
+    private userID = document.querySelector('#user-id');
     private name = document.querySelector('#name');
     private cpf = document.querySelector('#cpf');
     private birthDate = document.querySelector('#birth-date');
@@ -21,9 +22,9 @@ export class RegisterController{
     private user = document.querySelector('#user');
     
     private userServices = new UserService();
-    private taskServices = new TaskService();  
+    private taskServices = new TaskService(); 
 
-    async registerUser(){
+    async editUser(){
         if(this.validateFields()){
             if (!confirm('Are you sure you want to register this user into the database?')) 
             return;
@@ -44,7 +45,7 @@ export class RegisterController{
             }
             
             //register users
-             this.userServices.registerUsers(uservalues)
+             this.userServices.editUser(uservalues, (this.userID as HTMLInputElement).value)
             console.log("user registered");
 
 
@@ -52,6 +53,36 @@ export class RegisterController{
         }else{
             alert("verify that all the fields are filled correctly. all fields are mandatory.")
         }
+    }
+    async findUser(){
+        try{
+            if((this.userID as HTMLInputElement).value == ''||(this.userID as HTMLInputElement).value == null){
+                alert('please insert the id of the user')
+                return
+            }
+            let userData = await this.userServices.getUserById((this.userID as HTMLInputElement).value)
+            if(userData['message']){ 
+                //users don't have a message field, however, the 'user not found' error does
+                //so it enters this condition if the user was not found
+                alert('user not found')
+                return
+            }
+            (this.name as HTMLInputElement).value = userData['name'];
+            (this.cpf as HTMLInputElement).value = userData['cpf'];
+            (this.birthDate as HTMLInputElement).value = userData['birthDate'];
+            (this.email as HTMLInputElement).value = userData['email'];
+            (this.password as HTMLInputElement).value = userData['password'];
+            (this.address as HTMLInputElement).value = userData['address'];
+            (this.number as HTMLInputElement).value = userData['number'];
+            (this.complement as HTMLInputElement).value = userData['complement'];
+            (this.city as HTMLInputElement).value = userData['city'];
+            (this.state as HTMLInputElement).value = userData['state'];
+            (this.country as HTMLInputElement).value = userData['country'];
+
+        }catch(err){
+            throw new Error(err)
+        }
+        
     }
     validateFields():boolean{
         if((this.name as HTMLInputElement).value != null)
@@ -98,42 +129,6 @@ export class RegisterController{
         if( ValidationHelper.checkCountry((this.country as HTMLInputElement).value)==false)
         return false
         
-        return true
-    }
-
-    //tasks
-    async registerTask(){
-        if(this.validateTasks()){
-            if (!confirm('Are you sure you want to register this task into the database?')) 
-            return;
-            
-            let taskValues = await {
-                'description':(this.description as HTMLInputElement).value,
-                'date':(this.date as HTMLInputElement).value,
-                'user':(this.user as HTMLInputElement).value
-
-            }
-            //register tasks
-             this.taskServices.registerTasks(taskValues)
-            console.log("task registered");
-
-        }else{
-            alert("verify that all the fields are filled correctly. all fields are mandatory.")
-        }
-    }
-    validateTasks():boolean{
-        if((this.description as HTMLInputElement).value != null) //checkname can also be applied to description
-        if(ValidationHelper.checkName((this.description as HTMLInputElement).value )==false)
-        return false
-
-        if((this.date as HTMLInputElement).value != null) 
-        if(ValidationHelper.checkBirthDate((this.date as HTMLInputElement).value )==false)
-        return false
-
-        if((this.user as HTMLInputElement).value != null) //checkpassword can also be applied to user IDs
-        if(ValidationHelper.checkPassword((this.user as HTMLInputElement).value )==false)
-        return false
-
         return true
     }
 }

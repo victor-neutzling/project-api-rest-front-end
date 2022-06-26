@@ -15,5 +15,31 @@ export class TaskService {
             return taskData.json();
         });
     }
+    getTaskById(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let tasks = yield fetch(`http://localhost:3000/api/v1/task/${id}`, { method: 'GET' });
+            let taskData = yield tasks;
+            return taskData.json();
+        });
+    }
+    registerTasks(tasks) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let payload = {
+                'description': tasks['description'],
+                'date': tasks['date'],
+                'user': tasks['user']
+            };
+            console.log(payload);
+            yield fetch('http://localhost:3000/api/v1/task/', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            })
+                .then(function (res) { return res.json; })
+                .then(function (data) { console.log(JSON.stringify(data)); });
+        });
+    }
 }
 //# sourceMappingURL=taskServices.js.map
