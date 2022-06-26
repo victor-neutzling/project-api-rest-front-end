@@ -23,9 +23,10 @@
         </ul>
     </header>
     <main>
+        <h1>Register User</h1>
         <input type="text" placeholder="name" id="name">
         <input type="text" placeholder="cpf" id="cpf">
-        <input type="text" placeholder="birth-date" id="birth-date">
+        <input type="text" placeholder="birth-date  mm/dd/yyyy" id="birth-date">
         <input type="text" placeholder="email" id="email">
         <input type="text" placeholder="password" id="password">
         <input type="text" placeholder="address" id="address">
@@ -34,8 +35,10 @@
         <input type="text" placeholder="city" id="city">
         <input type="text" placeholder="state" id="state">
         <input type="text" placeholder="country" id="country">
-        <button id="submit-user">edit user</button>
+        <button id="submit-user">register user</button>
     </main>
-    
+    <script type="module" src="./app/dist/js/register.js"></script>
+    <script type="module" src="./app/dist/js/controllers/registerController.js"></script>
+    <script type="module" src="./app/dist/js/helpers/validationHelper.js"></script>
 </body>    
 </html>
