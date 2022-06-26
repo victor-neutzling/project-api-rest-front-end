@@ -1,3 +1,6 @@
+import { callbackify } from "util";
+import { UserService } from "../services/userServices.js";
+
 export class ValidationHelper{
     static checkName(name:string):boolean{
         
@@ -80,5 +83,14 @@ export class ValidationHelper{
         isFuture = true;
         
         return /^\d{2}\/\d{2}\/\d{4}$/.test(birthDate) && isFuture && isValid;
+    }
+    static checkUserId(id:string,users:any):boolean{
+        for(let i = 0;i<users[0].length;i++){
+            if((users[0][i])['_id']==id){
+                return true;
+            }
+        }
+        
+        return false
     }
 }

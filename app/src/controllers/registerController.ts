@@ -22,6 +22,13 @@ export class RegisterController{
     
     private userServices = new UserService();
     private taskServices = new TaskService();  
+    private users:any = []
+
+    constructor(){
+        this.userServices.getUsers().then((x:any)=>{
+            this.users.push(x)
+        })
+    }
 
     async registerUser(){
         if(this.validateFields()){
@@ -128,11 +135,11 @@ export class RegisterController{
         return false
 
         if((this.date as HTMLInputElement).value != null) 
-        if(ValidationHelper.checkDate((this.date as HTMLInputElement).value )==false)
+        if(ValidationHelper.checkDate((this.date as HTMLInputElement).value)==false)
         return false
 
         if((this.user as HTMLInputElement).value != null) //checkpassword can also be applied to user IDs
-        if(ValidationHelper.checkPassword((this.user as HTMLInputElement).value )==false)
+        if(ValidationHelper.checkUserId((this.user as HTMLInputElement).value, this.users )==false)
         return false
 
         return true

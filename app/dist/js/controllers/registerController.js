@@ -28,6 +28,10 @@ export class RegisterController {
         this.user = document.querySelector('#user');
         this.userServices = new UserService();
         this.taskServices = new TaskService();
+        this.users = [];
+        this.userServices.getUsers().then((x) => {
+            this.users.push(x);
+        });
     }
     registerUser() {
         return __awaiter(this, void 0, void 0, function* () {
@@ -117,7 +121,7 @@ export class RegisterController {
             if (ValidationHelper.checkDate(this.date.value) == false)
                 return false;
         if (this.user.value != null)
-            if (ValidationHelper.checkPassword(this.user.value) == false)
+            if (ValidationHelper.checkUserId(this.user.value, this.users) == false)
                 return false;
         return true;
     }

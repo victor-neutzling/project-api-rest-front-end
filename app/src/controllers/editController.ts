@@ -27,6 +27,15 @@ export class editController{
     private userServices = new UserService();
     private taskServices = new TaskService(); 
 
+    private users:any = []
+
+    constructor(){
+        this.userServices.getUsers().then((x:any)=>{
+            this.users.push(x)
+        })
+    }
+
+
     async editUser(){
         if(this.validateFields()){
             if (!confirm('Are you sure you want to register this user into the database?')) 
@@ -158,7 +167,7 @@ export class editController{
         return false
 
         if((this.birthDate as HTMLInputElement).value != null)
-        if(ValidationHelper.checkBirthDate((this.birthDate as HTMLInputElement).value)==false)
+        if(ValidationHelper.checkDate((this.birthDate as HTMLInputElement).value)==false)
         return false
 
         if((this.email as HTMLInputElement).value != null)
@@ -205,7 +214,7 @@ export class editController{
         return false
 
         if((this.user as HTMLInputElement).value != null) //checkpassword can also be applied to user IDs
-        if(ValidationHelper.checkPassword((this.user as HTMLInputElement).value )==false)
+        if(ValidationHelper.checkUserId((this.user as HTMLInputElement).value, this.users )==false)
         return false
 
         return true
