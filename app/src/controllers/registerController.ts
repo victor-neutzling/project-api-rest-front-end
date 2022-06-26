@@ -128,7 +128,7 @@ export class RegisterController{
         return false
 
         if((this.date as HTMLInputElement).value != null) 
-        if(ValidationHelper.checkBirthDate((this.date as HTMLInputElement).value )==false)
+        if(ValidationHelper.checkDate((this.date as HTMLInputElement).value )==false)
         return false
 
         if((this.user as HTMLInputElement).value != null) //checkpassword can also be applied to user IDs

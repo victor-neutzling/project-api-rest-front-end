@@ -114,7 +114,7 @@ export class RegisterController {
             if (ValidationHelper.checkName(this.description.value) == false)
                 return false;
         if (this.date.value != null)
-            if (ValidationHelper.checkBirthDate(this.date.value) == false)
+            if (ValidationHelper.checkDate(this.date.value) == false)
                 return false;
         if (this.user.value != null)
             if (ValidationHelper.checkPassword(this.user.value) == false)
