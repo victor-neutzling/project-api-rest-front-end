@@ -1,12 +1,26 @@
+html{
+    background-color: whitesmoke;
+}
 header{
     display: flex;
     justify-content: space-between;
-    padding: 24px;
+    padding: 16px;
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    background-color:black
+    
 }
 header ul{
     display: flex
 }
 header ul li{
     margin-left: 24px;
+}
+header a{
+    color: white;
+    text-decoration: none;
+
+}
+header a:hover{
+    text-decoration:underline;
+    color: gold;
 }

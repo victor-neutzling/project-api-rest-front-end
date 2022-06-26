@@ -7,6 +7,7 @@ export class SearchView extends View {
             <h2>description: ${model['description']}</h2>
             <h2>date: ${model['date']}</h2>
             <h2>user: ${model['user']}</h2>
+            <h2>ID: ${model['_id']}</h2>
             </div>
         </div>`;
         }
@@ -25,6 +26,7 @@ export class SearchView extends View {
             <h2>City: ${model['city']}</h2>
             <h2>State: ${model['state']}</h2>
             <h2>Country: ${model['country']}</h2>
+            <h2>ID: ${model['_id']}</h2>
             </div>
         </div>
         `;

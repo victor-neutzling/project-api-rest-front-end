@@ -28,6 +28,7 @@ main{
     display: flex;
     justify-content: space-evenly;
     padding: 16px;
+    background-color: white;
 }
 
 .search-item h2{

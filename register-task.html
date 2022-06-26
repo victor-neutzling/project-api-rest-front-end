@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
     <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/edit.css">
+    
     <title>Document</title>
 </head>
 <body>
@@ -21,8 +23,15 @@
         </ul>
     </header>
     <main>
-
+        <h1>Register Task</h1>
+        <input type="text" placeholder="description" id="description">
+        <input type="text" placeholder="date mm/dd/yyyy" id="date">
+        <input type="text" placeholder="user ID" id="user">
+        
+        <button id="submit-task">register task</button>
     </main>
-    
+    <script type="module" src="./app/dist/js/registerUser.js"></script>
+    <script type="module" src="./app/dist/js/controllers/registerController.js"></script>
+    <script type="module" src="./app/dist/js/helpers/validationHelper.js"></script>
 </body>    
 </html>
