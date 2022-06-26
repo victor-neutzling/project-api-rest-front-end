@@ -129,6 +129,24 @@ export class editController{
             alert("verify that all the fields are filled correctly. all fields are mandatory.")
         }
     }
+    async deleteUser(){
+        if((this.userID as HTMLInputElement).value == null || (this.userID as HTMLInputElement).value == ''){
+            alert('please insert the id of the user')
+            return
+        }
+        if(confirm('are you sure you want to delete this user?'))
+        this.userServices.deleteUser((this.userID as HTMLInputElement).value)
+        this.clearUsers();
+    }
+    async deleteTask(){
+        if((this.taskID as HTMLInputElement).value == null || (this.taskID as HTMLInputElement).value == ''){
+            alert('please insert the id of the task')
+            return
+        }
+        if(confirm('are you sure you want to delete this task?'))
+        this.taskServices.deleteTask((this.taskID as HTMLInputElement).value)
+        this.clearTasks();
+    }
     
     validateFields():boolean{
         if((this.name as HTMLInputElement).value != null)
@@ -191,5 +209,23 @@ export class editController{
         return false
 
         return true
+    }
+    clearTasks(){
+        (this.description as HTMLInputElement).value = "";
+        (this.date as HTMLInputElement).value = "";
+        (this.user as HTMLInputElement).value = "";
+    }
+    clearUsers(){
+        (this.name as HTMLInputElement).value = "";
+        (this.cpf as HTMLInputElement).value = "";
+        (this.birthDate as HTMLInputElement).value = "";
+        (this.email as HTMLInputElement).value = "";
+        (this.password as HTMLInputElement).value = "";
+        (this.address as HTMLInputElement).value = "";
+        (this.number as HTMLInputElement).value = "";
+        (this.complement as HTMLInputElement).value = "";
+        (this.city as HTMLInputElement).value = "";
+        (this.state as HTMLInputElement).value = "";
+        (this.country as HTMLInputElement).value = "";
     }
 }

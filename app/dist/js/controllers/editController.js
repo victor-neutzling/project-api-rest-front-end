@@ -126,6 +126,28 @@ export class editController {
             }
         });
     }
+    deleteUser() {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (this.userID.value == null || this.userID.value == '') {
+                alert('please insert the id of the user');
+                return;
+            }
+            if (confirm('are you sure you want to delete this user?'))
+                this.userServices.deleteUser(this.userID.value);
+            this.clearUsers();
+        });
+    }
+    deleteTask() {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (this.taskID.value == null || this.taskID.value == '') {
+                alert('please insert the id of the task');
+                return;
+            }
+            if (confirm('are you sure you want to delete this task?'))
+                this.taskServices.deleteTask(this.taskID.value);
+            this.clearTasks();
+        });
+    }
     validateFields() {
         if (this.name.value != null)
             if (ValidationHelper.checkName(this.name.value) == false)
@@ -173,6 +195,24 @@ export class editController {
             if (ValidationHelper.checkPassword(this.user.value) == false)
                 return false;
         return true;
+    }
+    clearTasks() {
+        this.description.value = "";
+        this.date.value = "";
+        this.user.value = "";
+    }
+    clearUsers() {
+        this.name.value = "";
+        this.cpf.value = "";
+        this.birthDate.value = "";
+        this.email.value = "";
+        this.password.value = "";
+        this.address.value = "";
+        this.number.value = "";
+        this.complement.value = "";
+        this.city.value = "";
+        this.state.value = "";
+        this.country.value = "";
     }
 }
 //# sourceMappingURL=editController.js.map

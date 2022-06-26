@@ -54,4 +54,9 @@ export class TaskService{
         .then(function(res){return res.json;})
         .then(function(data){console.log(JSON.stringify(data))})
     }
+    public async deleteTask(id:string):Promise<any>{ 
+        let tasks = await fetch(`http://localhost:3000/api/v1/task/${id}`, {method: 'DELETE'});
+        let taskData = await tasks;
+        return taskData.json();
+    }
 }

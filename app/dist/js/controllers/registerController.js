@@ -48,7 +48,7 @@ export class RegisterController {
                     'country': this.country.value
                 };
                 this.userServices.registerUsers(uservalues);
-                console.log("user registered");
+                this.clearUsers();
             }
             else {
                 alert("verify that all the fields are filled correctly. all fields are mandatory.");
@@ -102,7 +102,7 @@ export class RegisterController {
                     'user': this.user.value
                 };
                 this.taskServices.registerTasks(taskValues);
-                console.log("task registered");
+                this.clearTasks();
             }
             else {
                 alert("verify that all the fields are filled correctly. all fields are mandatory.");
@@ -120,6 +120,24 @@ export class RegisterController {
             if (ValidationHelper.checkPassword(this.user.value) == false)
                 return false;
         return true;
+    }
+    clearUsers() {
+        this.name.value = "";
+        this.cpf.value = "";
+        this.birthDate.value = "";
+        this.email.value = "";
+        this.password.value = "";
+        this.address.value = "";
+        this.number.value = "";
+        this.complement.value = "";
+        this.city.value = "";
+        this.state.value = "";
+        this.country.value = "";
+    }
+    clearTasks() {
+        this.description.value = "";
+        this.date.value = "";
+        this.user.value = "";
     }
 }
 //# sourceMappingURL=registerController.js.map

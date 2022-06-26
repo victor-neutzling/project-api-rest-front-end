@@ -70,5 +70,10 @@ export class UserService{
         .then(function(res){return res.json;})
         .then(function(data){console.log(JSON.stringify(data))})
     }
+    public async deleteUser(id:string):Promise<any>{ 
+        let users = await fetch(`http://localhost:3000/api/v1/user/${id}`, {method: 'DELETE'});
+        let userData = await users;
+        return userData.json();
+    }
         
 }

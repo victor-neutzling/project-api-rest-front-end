@@ -44,8 +44,8 @@ export class RegisterController{
             }
             
             //register users
-             this.userServices.registerUsers(uservalues)
-            console.log("user registered");
+            this.userServices.registerUsers(uservalues)
+            this.clearUsers()
 
 
 
@@ -114,12 +114,13 @@ export class RegisterController{
 
             }
             //register tasks
-             this.taskServices.registerTasks(taskValues)
-            console.log("task registered");
+            this.taskServices.registerTasks(taskValues)
+            this.clearTasks()
 
         }else{
             alert("verify that all the fields are filled correctly. all fields are mandatory.")
         }
+        
     }
     validateTasks():boolean{
         if((this.description as HTMLInputElement).value != null) //checkname can also be applied to description
@@ -135,5 +136,23 @@ export class RegisterController{
         return false
 
         return true
+    }
+    clearUsers(){
+        (this.name as HTMLInputElement).value = "";
+        (this.cpf as HTMLInputElement).value = "";
+        (this.birthDate as HTMLInputElement).value = "";
+        (this.email as HTMLInputElement).value = "";
+        (this.password as HTMLInputElement).value = "";
+        (this.address as HTMLInputElement).value = "";
+        (this.number as HTMLInputElement).value = "";
+        (this.complement as HTMLInputElement).value = "";
+        (this.city as HTMLInputElement).value = "";
+        (this.state as HTMLInputElement).value = "";
+        (this.country as HTMLInputElement).value = "";
+    }
+    clearTasks(){
+        (this.description as HTMLInputElement).value = "";
+        (this.date as HTMLInputElement).value = "";
+        (this.user as HTMLInputElement).value = "";
     }
 }

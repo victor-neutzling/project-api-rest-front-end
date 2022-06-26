@@ -76,5 +76,12 @@ export class UserService {
                 .then(function (data) { console.log(JSON.stringify(data)); });
         });
     }
+    deleteUser(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let users = yield fetch(`http://localhost:3000/api/v1/user/${id}`, { method: 'DELETE' });
+            let userData = yield users;
+            return userData.json();
+        });
+    }
 }
 //# sourceMappingURL=userServices.js.map

@@ -16,8 +16,7 @@
         <ul>
             <li><a href="register-user.html">Register user</a></li>
             <li><a href="register-task.html">Register task</a></li>
-            <li><a href="delete-user.html">Delete user</a></li>
-            <li><a href="delete-task.html">Delete Task</a></li>
+            
             <li><a href="edit-user.html">Find user by ID</a></li>
             <li><a href="edit-task.html">Find task by ID</a></li>
         </ul>
@@ -30,8 +29,10 @@
         <input type="text" placeholder="description" id="description">
         <input type="text" placeholder="date mm/dd/yyyy" id="date">
         <input type="text" placeholder="user ID" id="user">
-        
-        <button id="submit-task">Edit Task</button>
+        <div class="btns">
+            <button id="delete-task">Delete Task</button>
+            <button id="submit-task">Edit Task</button>
+        </div>
     </main>
     <script type="module" src="./app/dist/js/editTask.js"></script>
     <script type="module" src="./app/dist/js/controllers/editController.js"></script>

@@ -16,8 +16,6 @@
         <ul>
             <li><a href="register-user.html">Register user</a></li>
             <li><a href="register-task.html">Register task</a></li>
-            <li><a href="delete-user.html">Delete user</a></li>
-            <li><a href="delete-task.html">Delete Task</a></li>
             <li><a href="edit-user.html">Find user by ID</a></li>
             <li><a href="edit-task.html">Find task by ID</a></li>
         </ul>
@@ -38,7 +36,10 @@
         <input type="text" placeholder="city" id="city">
         <input type="text" placeholder="state" id="state">
         <input type="text" placeholder="country" id="country">
-        <button id="submit-user">Edit User</button>
+        <div class="btns">
+            <button id="delete-user">Delete user</button>
+            <button id="submit-user">Edit user</button>
+        </div>
     </main>
     <script type="module" src="./app/dist/js/edit.js"></script>
     <script type="module" src="./app/dist/js/controllers/editController.js"></script>

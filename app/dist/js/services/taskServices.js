@@ -60,5 +60,12 @@ export class TaskService {
                 .then(function (data) { console.log(JSON.stringify(data)); });
         });
     }
+    deleteTask(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let tasks = yield fetch(`http://localhost:3000/api/v1/task/${id}`, { method: 'DELETE' });
+            let taskData = yield tasks;
+            return taskData.json();
+        });
+    }
 }
 //# sourceMappingURL=taskServices.js.map
