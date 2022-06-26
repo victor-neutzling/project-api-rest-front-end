@@ -1,5 +1,6 @@
 html{
     background-color: whitesmoke;
+    font-family:Verdana, Geneva, Tahoma, sans-serif
 }
 header{
     display: flex;
