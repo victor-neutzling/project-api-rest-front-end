@@ -16,7 +16,10 @@ export class editController{
     private state = document.querySelector('#state');
     private country = document.querySelector('#country');
 
+    
+
     //tasks
+    private taskID = document.querySelector('#task-id')
     private description = document.querySelector('#description');
     private date = document.querySelector('#date');
     private user = document.querySelector('#user');
@@ -84,6 +87,49 @@ export class editController{
         }
         
     }
+    async findTask(){
+        try{
+            if((this.taskID as HTMLInputElement).value == ''||(this.taskID as HTMLInputElement).value == null){
+                alert('please insert the id of the task')
+                return
+            }
+            let taskData = await this.taskServices.getTaskById((this.taskID as HTMLInputElement).value)
+            if(taskData['message']){ 
+                //users don't have a message field, however, the 'user not found' error does
+                //so it enters this condition if the user was not found
+                alert('task not found')
+                return
+            }
+            (this.description as HTMLInputElement).value = taskData['description'];
+            (this.date as HTMLInputElement).value = taskData['date'];
+            (this.user as HTMLInputElement).value = taskData['user'];
+            
+
+        }catch(err){
+            throw new Error(err)
+        }
+    }
+    async editTask(){
+        if(this.validateTasks()){
+            if (!confirm('Are you sure you want to register this task into the database?')) 
+            return;
+            
+            let taskValues = await {
+                'description':(this.description as HTMLInputElement).value,
+                'date':(this.date as HTMLInputElement).value,
+                'user':(this.user as HTMLInputElement).value
+
+            }
+            //register tasks
+            console.log('324')
+             this.taskServices.editTask(taskValues,(this.taskID as HTMLInputElement).value)
+            console.log("task registered");
+
+        }else{
+            alert("verify that all the fields are filled correctly. all fields are mandatory.")
+        }
+    }
+    
     validateFields():boolean{
         if((this.name as HTMLInputElement).value != null)
         if(ValidationHelper.checkName((this.name as HTMLInputElement).value )==false)
@@ -129,6 +175,21 @@ export class editController{
         if( ValidationHelper.checkCountry((this.country as HTMLInputElement).value)==false)
         return false
         
+        return true
+    }
+    validateTasks():boolean{
+        if((this.description as HTMLInputElement).value != null) //checkname can also be applied to description
+        if(ValidationHelper.checkName((this.description as HTMLInputElement).value )==false)
+        return false
+
+        if((this.date as HTMLInputElement).value != null) 
+        if(ValidationHelper.checkBirthDate((this.date as HTMLInputElement).value )==false)
+        return false
+
+        if((this.user as HTMLInputElement).value != null) //checkpassword can also be applied to user IDs
+        if(ValidationHelper.checkPassword((this.user as HTMLInputElement).value )==false)
+        return false
+
         return true
     }
 }

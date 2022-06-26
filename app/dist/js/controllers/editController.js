@@ -24,6 +24,7 @@ export class editController {
         this.city = document.querySelector('#city');
         this.state = document.querySelector('#state');
         this.country = document.querySelector('#country');
+        this.taskID = document.querySelector('#task-id');
         this.description = document.querySelector('#description');
         this.date = document.querySelector('#date');
         this.user = document.querySelector('#user');
@@ -85,6 +86,46 @@ export class editController {
             }
         });
     }
+    findTask() {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                if (this.taskID.value == '' || this.taskID.value == null) {
+                    alert('please insert the id of the task');
+                    return;
+                }
+                let taskData = yield this.taskServices.getTaskById(this.taskID.value);
+                if (taskData['message']) {
+                    alert('task not found');
+                    return;
+                }
+                this.description.value = taskData['description'];
+                this.date.value = taskData['date'];
+                this.user.value = taskData['user'];
+            }
+            catch (err) {
+                throw new Error(err);
+            }
+        });
+    }
+    editTask() {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (this.validateTasks()) {
+                if (!confirm('Are you sure you want to register this task into the database?'))
+                    return;
+                let taskValues = yield {
+                    'description': this.description.value,
+                    'date': this.date.value,
+                    'user': this.user.value
+                };
+                console.log('324');
+                this.taskServices.editTask(taskValues, this.taskID.value);
+                console.log("task registered");
+            }
+            else {
+                alert("verify that all the fields are filled correctly. all fields are mandatory.");
+            }
+        });
+    }
     validateFields() {
         if (this.name.value != null)
             if (ValidationHelper.checkName(this.name.value) == false)
@@ -118,6 +159,18 @@ export class editController {
                 return false;
         if (this.country.value != null)
             if (ValidationHelper.checkCountry(this.country.value) == false)
+                return false;
+        return true;
+    }
+    validateTasks() {
+        if (this.description.value != null)
+            if (ValidationHelper.checkName(this.description.value) == false)
+                return false;
+        if (this.date.value != null)
+            if (ValidationHelper.checkBirthDate(this.date.value) == false)
+                return false;
+        if (this.user.value != null)
+            if (ValidationHelper.checkPassword(this.user.value) == false)
                 return false;
         return true;
     }

@@ -41,5 +41,24 @@ export class TaskService {
                 .then(function (data) { console.log(JSON.stringify(data)); });
         });
     }
+    editTask(tasks, id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let payload = {
+                'description': tasks['description'],
+                'date': tasks['date'],
+                'user': tasks['user']
+            };
+            console.log(payload);
+            yield fetch(`http://localhost:3000/api/v1/task/${id}`, {
+                method: 'PUT',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            })
+                .then(function (res) { return res.json; })
+                .then(function (data) { console.log(JSON.stringify(data)); });
+        });
+    }
 }
 //# sourceMappingURL=taskServices.js.map
